@@ -1,4 +1,14 @@
 JTopStats::Application.routes.draw do
+  resources :clips
+
+  resources :artists
+
+  resources :rankings
+  resources :jtops, :path => 'jtop' do
+    collection {get :list}
+  end
+  #resource :jtop, :controller => :jtops
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +58,7 @@ JTopStats::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+  root :to => "jtops#index"
 
   # See how all your routes lay out with "rake routes"
 

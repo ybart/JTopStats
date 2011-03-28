@@ -7,7 +7,16 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
+<header>
+	<h1 id="j-top_stats">J-Top Stats</h1>
+	<nav>
+		<ul>
+			<li><%= link_to "J-Top" %></li>
+			<li><%= link_to "Classiques" %></li>
+			<li><%= link_to "Artistes" %></li>
+		</ul>
+	</nav>
+</header>
 <%= yield %>
 
 </body>
