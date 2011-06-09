@@ -8,5 +8,7 @@ class Jtop
   property :started_at, Date
   property :ended_at, Date
 
+  property :presented_by, String
+
   has n, :rankings
 end

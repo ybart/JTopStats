@@ -9,6 +9,7 @@ gem 'actionmailer',       RAILS_VERSION, :require => 'action_mailer'
 gem 'railties',           RAILS_VERSION, :require => 'rails'
 gem 'jquery-rails'
 gem 'nokogiri'
+gem 'rake', '0.8.7'
 
 gem 'dm-rails',          '~> 1.1.0'
 gem 'dm-sqlite-adapter', DM_VERSION
@@ -56,6 +57,6 @@ group(:development, :test) do
   # in your rails application.
 
   # gem 'rails_metrics', '~> 0.1', :git => 'git://github.com/engineyard/rails_metrics'
-
+  gem 'ruby-debug'
 end
 

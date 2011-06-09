@@ -4,7 +4,7 @@ class Clip
 
   property :id, Serial
 
-  property :name, String
+  property :title, String
   property :featuring, String
 
   belongs_to :artist
