@@ -11,10 +11,26 @@ class Ranking
   property :pal_count, Integer
   property :pal_score, Integer
 
-  belongs_to :clip
+  belongs_to :clip  
   belongs_to :jtop
+  belongs_to :prev_jtop, 'Jtop'
   
   has 1, :artist, :through => :clip
+  #has 1, :prev_ranking, 'Ranking', :jtop_id => Ranking.all(:jtop_id.lt => jtop_id).aggregate(:jtop_id.max), :clip_id => clip_id
+  
+  def prev_ranking
+    Ranking.all(:jtop_id => Ranking.all(:jtop_id.lt => jtop_id, :clip_id => clip_id).aggregate(:jtop_id.max), :clip_id => clip_id).first
+  end
+  
+  def formatted_progress controller
+    return "Entrée" if prev_jtop_id.nil?
+    
+    plus = progress > 0 ? '+' : ''
+    str = "#{plus}#{progress}".html_safe
+    
+    return  controller.link_to("#{str}*", controller.jtop_path(prev_jtop_id)) if jtop_id != prev_jtop_id + 1
+    return str
+  end
   
   def self.sorted_by_clips direction=:asc
     order = DataMapper::Query::Direction.new(clip.artist.name, direction)

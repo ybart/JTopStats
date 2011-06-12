@@ -32,15 +32,24 @@ nav ul li:hover {
 
 section.body {margin: 15px;}
 
-table.data {border: 1px solid #aaa; width:100%;border-spacing:0px;padding:1px;}
+table.data {border: 1px solid #aaa; width:100%;border-spacing:0px;padding:1px; table-layout:fixed;}
 table.data thead {background-color:#b00}
+table.data thead a, table.data thead th {color:#fff;text-decoration:none;font-weight:normal;}
 table.data tbody tr td {border-top: 1px solid #f7f7f7;}
 table.data tbody tr.odd {background-color:#f7f7f7}
 table.data tbody tr.even {background-color:#f7e4e4}
 table.data tbody tr:hover {background-color:#c3c3e4}
 table.data tbody tr.highlighted {background-color:#245AD0; color: #fff}
-table.data thead a, table.data thead {color:#fff;text-decoration:none;}
+table.data th, table.data td {overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:Helvetica, Tahoma, sans-serif;}
+
+th.checkbox-col {width:22px;}
+th.vote_c-col, th.total-col {width:40px;}
+th.rank-col, th.pal_c-col {width:50px;}
+th.progress-col, th.vote_s-col, th.pal_s-col {width:70px;}
+th.progress-col a, th.vote_s-col a, th.pal_s-col a {font-size:0.9em;}
+th.clips-col {width:100%;}
+span.sort-arrow {font-size:.7em;}
 
 div.modal {display:none;background:red;}
 
-#chart-container {width: 1400px; height: 800px; margin-top: 0px; margin-right: auto; margin-bottom: 0px; margin-left: auto;}
+#chart-container {width: 1000px; height: 600px; margin-top: 0px; margin-right: auto; margin-bottom: 0px; margin-left: auto;}

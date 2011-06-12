@@ -14,7 +14,7 @@ module ApplicationHelper
   def sort_link(title, column, options = {})
     #condition = options[:unless] if options.has_key?(:unless)
     #link_to_unless condition, title, request.parameters.merge( {:c => column, :d => sort_dir} )
-    link_to(title, request.parameters.merge( {:c => column, :d => sort_dir(column)} )) + " #{arrow(column)}".html_safe
+    "<span class='sort-arrow'>#{arrow(column)}</span> ".html_safe + link_to(title, request.parameters.merge( {:c => column, :d => sort_dir(column)} ))
   end
   
   def javascripts folder

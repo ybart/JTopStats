@@ -19,8 +19,8 @@ function buildChart(data) {
 			allowDecimals: false,
 		},
 		yAxis: {
-			min: 0,
-			max: 100,
+			min: data.yAxis.min-1,
+			max: Math.min(data.yAxis.min+250, data.yAxis.max + 1),
 			reversed: true,
 			allowDecimals: false,
 			title: {
@@ -41,7 +41,6 @@ function buildChart(data) {
 		},
 		tooltip: {
 			formatter: function() {
-				console.log(this.series)
 				return '<b>'+ this.series.options.fullname +'</b><br/>'+
 				'J-Top ' + this.x +': n°'+ this.y;
 			}
@@ -59,6 +58,8 @@ function buildChart(data) {
 		},
 		series: data.series
 	})
+	
+	console.log(data.yAxis.min+100, data.yAxis.max + 1, Math.min(data.yAxis.min+100, data.yAxis.max + 1))
 	
 	$('svg > path').attr('fill-opacity', 0.3)
 	$('svg > .highcharts-legend > rect').attr('fill-opacity', 0.3)
@@ -78,6 +79,9 @@ $(function() {
 				success: function(data, status, xhr) {
 					$.fancybox('<div id="chart-container"></div>');
 					buildChart(data)
+				},
+				error: function(data, status, xhr) {
+				    $.fancybox(data.responseText)
 				}
 			});
 		

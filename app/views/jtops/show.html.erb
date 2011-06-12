@@ -1,19 +1,21 @@
 <% charts_js %>
 <section id="content" class="body">
+	J-Top du <%= I18n.localize(@jtop.aired_at, :format => :long) %>
 	<%= form_tag(chart_clips_path, :method => :get) do %>
+	<input type="hidden" name="jtop_id" value="<%= @jtop.id %>">
 	<%= @jtop.rankings.count %> results | For selection: <%= image_submit_tag 'chart.png', :class => 'chart' %>
 	<table class="data">
 		<thead>
 		<tr>
-			<th></th>
-			<th><%= sort_link 'Rang', :rank %></th>
-			<th><%= sort_link 'Progression', :progress %></th>
-			<th><%= sort_link 'Clip', :clip %></th>
-			<th><%= sort_link 'Votes', :vote_count %></th>
-			<th><%= sort_link 'Score Votes', :vote_score %></th>
-			<th><%= sort_link 'J-Potes', :pal_count %></th>
-			<th><%= sort_link 'Score J-Potes', :pal_score %></th>
-			<th><%= 'Total' %></th>
+			<th class="checkbox-col"><%= check_box_tag 'select_all' %></th>
+			<th class="rank-col"><%= sort_link 'Rang', :rank %></th>
+			<th class="progress-col"><%= sort_link 'Progression', :progress %></th>
+			<th class="clip-col"><%= sort_link 'Clip', :clip %></th>
+			<th class="vote_c-col"><%= sort_link 'Votes', :vote_count %></th>
+			<th class="vote_s-col"><%= sort_link 'Sc. Votes', :vote_score %></th>
+			<th class="pal_c-col"><%= sort_link 'J-Potes', :pal_count %></th>
+			<th class="pal_s-col"><%= sort_link 'Sc. J-Potes', :pal_score %></th>
+			<th class="total-col"><%= 'Total' %></th>
 		</tr>
 		</thead>
 		<tbody>
@@ -22,7 +24,7 @@
 		<tr class="<%= cycle('odd', 'even') %>">
 			<td><%= check_box_tag 'clip_ids[]', r.clip_id, false, :id => "clip_id_#{r.clip_id}", :class => 'select' %></td>
 			<td><%= r.rank %></td>
-			<td><%= r.progress %></td>
+			<td><%= r.formatted_progress(self) %></td>
 			<td><%= "#{r.clip.artist.name} - #{r.clip.title}" %></td>
 			<td><%= r.vote_count %></td>
 			<td><%= r.vote_score %></td>
