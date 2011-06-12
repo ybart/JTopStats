@@ -1,6 +1,6 @@
 class ClipsController < ApplicationController
   def chart
-    #render :inline => "Please choose at least 1 and at most 20 clips.", status => 400 and return unless params[:clip_ids] && (1..20).include?(params[:clip_ids].count)
+    render :inline => "Please choose at least 1 and at most 20 clips.", status => 400 and return unless params[:clip_ids] && (1..20).include?(params[:clip_ids].count)
     
     @rankings = []
     jtop_id = params[:jtop_id].to_i
