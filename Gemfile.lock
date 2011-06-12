@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/xaviershay/dm-active_model.git
+  revision: 715815e9fac90e55f820a61bb43211c9c559be3f
+  specs:
+    dm-active_model (1.1.0)
+      activemodel (~> 3.0.4)
+      dm-core (~> 1.1.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -26,9 +34,6 @@ GEM
     columnize (0.3.2)
     data_objects (0.10.6)
       addressable (~> 2.1)
-    dm-active_model (1.1.0)
-      activemodel (~> 3.0.4)
-      dm-core (~> 1.1.0)
     dm-aggregates (1.1.0)
       dm-core (~> 1.1.0)
     dm-constraints (1.1.0)
@@ -42,6 +47,9 @@ GEM
       dm-core (~> 1.1.0)
     dm-observer (1.1.0)
       dm-core (~> 1.1.0)
+    dm-postgres-adapter (1.1.0)
+      dm-do-adapter (~> 1.1.0)
+      do_postgres (~> 0.10.2)
     dm-rails (1.1.0)
       actionpack (~> 3.0.4)
       dm-active_model (~> 1.1.0)
@@ -63,6 +71,8 @@ GEM
       uuidtools (~> 2.1.2)
     dm-validations (1.1.0)
       dm-core (~> 1.1.0)
+    do_postgres (0.10.6)
+      data_objects (= 0.10.6)
     do_sqlite3 (0.10.6)
       data_objects (= 0.10.6)
     erubis (2.6.6)
@@ -81,6 +91,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     nokogiri (1.4.4)
+    pg (0.11.0)
     polyglot (0.3.1)
     rack (1.2.3)
     rack-mount (0.6.14)
@@ -112,10 +123,12 @@ DEPENDENCIES
   actionmailer (~> 3.0.4)
   actionpack (~> 3.0.4)
   activesupport (~> 3.0.4)
+  dm-active_model!
   dm-aggregates (~> 1.1.0)
   dm-constraints (~> 1.1.0)
   dm-migrations (~> 1.1.0)
   dm-observer (~> 1.1.0)
+  dm-postgres-adapter (~> 1.1.0)
   dm-rails (~> 1.1.0)
   dm-sqlite-adapter (~> 1.1.0)
   dm-timestamps (~> 1.1.0)
@@ -124,6 +137,7 @@ DEPENDENCIES
   dm-validations (~> 1.1.0)
   jquery-rails
   nokogiri
+  pg
   railties (~> 3.0.4)
   rake (= 0.8.7)
   ruby-debug

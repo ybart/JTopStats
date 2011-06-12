@@ -10,9 +10,9 @@ gem 'railties',           RAILS_VERSION, :require => 'rails'
 gem 'jquery-rails'
 gem 'nokogiri'
 gem 'rake', '0.8.7'
+gem 'pg'
 
 gem 'dm-rails',          '~> 1.1.0'
-gem 'dm-sqlite-adapter', DM_VERSION
 
 # You can use any of the other available database adapters.
 # This is only a small excerpt of the list of all available adapters
@@ -25,7 +25,6 @@ gem 'dm-sqlite-adapter', DM_VERSION
 
 # gem 'dm-sqlite-adapter',    DM_VERSION
 # gem 'dm-mysql-adapter',     DM_VERSION
-# gem 'dm-postgres-adapter',  DM_VERSION
 # gem 'dm-oracle-adapter',    DM_VERSION
 # gem 'dm-sqlserver-adapter', DM_VERSION
 
@@ -38,7 +37,15 @@ gem 'dm-aggregates',        DM_VERSION
 gem 'dm-timestamps',        DM_VERSION
 gem 'dm-observer',          DM_VERSION
 
+# Hack to run on Heroku
+gem 'dm-active_model', :git => 'git://github.com/xaviershay/dm-active_model.git'
+
+group  :production do
+  gem 'dm-postgres-adapter',  DM_VERSION
+end
+
 group(:development, :test) do
+  gem 'dm-sqlite-adapter', DM_VERSION
 
   # Uncomment this if you want to use rspec for testing your application
 
