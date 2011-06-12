@@ -24,3 +24,5 @@ fr:
       long: "%B %d, %Y %H:%M"
     am: "am"
     pm: "pm"
+  ranking:
+    in: Entrée

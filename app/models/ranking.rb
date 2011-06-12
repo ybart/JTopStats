@@ -23,7 +23,7 @@ class Ranking
   end
   
   def formatted_progress controller
-    return "Entrée" if prev_jtop_id.nil?
+    return I18n.t 'ranking.in' if prev_jtop_id.nil?
     
     plus = progress > 0 ? '+' : ''
     str = "#{plus}#{progress}".html_safe
