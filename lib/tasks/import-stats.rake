@@ -89,11 +89,13 @@ namespace :import do
     # DataMapper::Logger.new($stderr, :info)
 
     # Importing Artists
+    puts "Migrating Artists..."
     doc.css('Artiste').each { |a|
       Artist.create(:id => content_for(a, 'id'), :name => content_for(a, 'nom'))
     }
 
     # Importing Clips
+    puts "Migrating Clips..."
     doc.css('Clip').each { |c|
       Clip.create(:id => content_for(c, 'id'),
       :title => content_for(c, 'titre'),
@@ -101,12 +103,14 @@ namespace :import do
     }
 
     # Importing J-Tops
+    puts "Migrating J-Tops..."
     doc.css('jTop').each { |t|
       Jtop.create(:id => content_for(t, 'id'),
       :aired_at => Time.at(content_for(t, 'date_jTop').to_i))
     }
 
     # Importing Rankings
+    puts "Migrating Rankings..."
     doc.css('Notation').each { |r|
       Ranking.create(
       :jtop_id => content_for(r, 'id_jTop'),
