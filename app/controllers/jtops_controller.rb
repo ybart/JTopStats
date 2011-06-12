@@ -9,7 +9,7 @@ class JtopsController < ApplicationController
   end
 
   def list
-
+    render :inline => Ranking.count.to_s
   end
 
   def show
