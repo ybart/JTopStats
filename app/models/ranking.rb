@@ -13,7 +13,7 @@ class Ranking
 
   belongs_to :clip  
   belongs_to :jtop
-  belongs_to :prev_jtop, 'Jtop'
+  belongs_to :prev_jtop, 'Jtop', :required => false
   
   has 1, :artist, :through => :clip
   #has 1, :prev_ranking, 'Ranking', :jtop_id => Ranking.all(:jtop_id.lt => jtop_id).aggregate(:jtop_id.max), :clip_id => clip_id
