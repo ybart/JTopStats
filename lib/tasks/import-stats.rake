@@ -90,7 +90,7 @@ namespace :import do
     DataMapper.auto_migrate!
 
     # Silent logger
-    # DataMapper::Logger.new($stderr, :info)
+    DataMapper::Logger.new($stderr, :info)
 
     # Importing Artists
     puts "Migrating Artists..."
