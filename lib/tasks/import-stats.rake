@@ -75,13 +75,17 @@ namespace :import do
       next
     end
 
-    print 'This will override current database. Do you want to continue (y/N) ? '
-    unless getchar.downcase == 'y'
-      puts 'n'
-      next
-    end
+    if ENV.include?("non_interactive")
+      puts "This will override current database."
+    else
+      print 'This will override current database. Do you want to continue (y/N) ? '
+      unless getchar.downcase == 'y'
+        puts 'n'
+        next
+      end
 
-    puts 'y'
+      puts 'y'
+    end
 
     DataMapper.auto_migrate!
 
