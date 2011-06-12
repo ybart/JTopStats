@@ -36,6 +36,7 @@ gem 'dm-transactions',      DM_VERSION
 gem 'dm-aggregates',        DM_VERSION
 gem 'dm-timestamps',        DM_VERSION
 gem 'dm-observer',          DM_VERSION
+gem 'dm-ar-finders',        :git => 'git://github.com/datamapper/dm-ar-finders.git'
 
 # Hack to run on Heroku
 gem 'dm-active_model', :git => 'git://github.com/xaviershay/dm-active_model.git'

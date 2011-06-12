@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/datamapper/dm-ar-finders.git
+  revision: 41fa58b7a20fea003485251e34900d67ec70614c
+  specs:
+    dm-ar-finders (1.1.1)
+      dm-core (~> 1.1.0)
+
+GIT
   remote: git://github.com/xaviershay/dm-active_model.git
   revision: 715815e9fac90e55f820a61bb43211c9c559be3f
   specs:
@@ -125,6 +132,7 @@ DEPENDENCIES
   activesupport (~> 3.0.4)
   dm-active_model!
   dm-aggregates (~> 1.1.0)
+  dm-ar-finders!
   dm-constraints (~> 1.1.0)
   dm-migrations (~> 1.1.0)
   dm-observer (~> 1.1.0)
