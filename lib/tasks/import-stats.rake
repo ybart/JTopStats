@@ -133,7 +133,5 @@ namespace :import do
         puts "Added rankings: " + Ranking.count.to_s
       end
     }
-    
   end
-
 end
