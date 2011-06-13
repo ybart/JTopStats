@@ -5,6 +5,7 @@ class JtopsController < ApplicationController
       return
     end
 
+    redirect_to jtop_path([2, params[:id].to_i].max) and return if params[:id]
     redirect_to jtop_path(Jtop.last)
   end
 

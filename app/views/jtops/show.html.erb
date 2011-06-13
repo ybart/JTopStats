@@ -1,9 +1,10 @@
 <% charts_js %>
 <section id="content" class="body">
 	J-Top du <%= I18n.localize(@jtop.aired_at, :format => :long) %>
+	<div id="quick-nav"><%= quick_nav %></div>
 	<%= form_tag(chart_clips_path, :method => :get) do %>
 	<input type="hidden" name="jtop_id" value="<%= @jtop.id %>">
-	<%= @jtop.rankings.count %> results | For selection: <%= image_submit_tag 'chart.png', :class => 'chart' %>
+	<%= @jtop.rankings.count %> résultats | Sélection: <%= image_submit_tag 'chart.png', :class => 'chart' %>
 	<table class="data">
 		<thead>
 		<tr>
@@ -33,7 +34,7 @@
 			<td><%= r.pal_score + r.vote_score %></td>
 		</tr>
 	<% } %>	
-	<% end %>	
+	<% end %>
 	</tbody>
 	</table>
 </section>

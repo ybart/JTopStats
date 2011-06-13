@@ -1,8 +1,8 @@
 defaults: &defaults
-  adapter: sqlite
+  adapter: postgresql
 
 development:
-  database: db/JTopStats_development.db
+  database: jtop_dev
   <<: *defaults
 
   # Add more repositories
@@ -17,7 +17,7 @@ development:
   #     ...
 
 test:
-  database: db/JTopStats_test.db
+  database: jtop_test
   <<: *defaults
 production:
   database: db/JTopStats_production.db
