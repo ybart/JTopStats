@@ -26,3 +26,7 @@ fr:
     pm: "pm"
   ranking:
     in: Entrée
+  jtop:
+    go: "Aller au J-Top:"
+  previous: Précédent
+  next: Suivant
