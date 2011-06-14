@@ -1,9 +1,9 @@
-defaults: &defaults
+pg: &defaults
   adapter: postgresql
 
 development:
   database: jtop_dev
-  <<: *defaults
+  adapter: postgresql
 
   # Add more repositories
   # repositories:
@@ -17,8 +17,10 @@ development:
   #     ...
 
 test:
+  adapter: postgresql
   database: jtop_test
-  <<: *defaults
+
 production:
+  adapter: postgresql
   database: db/JTopStats_production.db
-  <<: *defaults
+

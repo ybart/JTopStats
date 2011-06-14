@@ -39,6 +39,17 @@ def compute_rankings rankings
   }
 end
 
+def compute_tops clips
+  Clip.raise_on_save_failure = true
+  Clip.transaction do
+    clips.each {|clip|
+      clip.top10_count = clip.rankings(:rank.lte => 10).count
+      clip.top20_count = clip.rankings(:rank.lte => 20).count
+      clip.save
+    }
+  end
+end
+
 def fix_sequence model
   model.transaction do
     max = model.aggregate(:id.max)
@@ -84,7 +95,21 @@ namespace :compute do
 >>>>>>> e1cbae0... Nolife Website importer
     end
   end
+  
+  namespace :top20 do
+    desc "Compute new tops 10/20"
+    task :all => :environment do
+      compute_tops Clip.all
+    end
+
+    desc "Compute new tops 10/20"
+    task :new => :environment do
+      compute_tops (Clip.all(:top10_count => nil) | Clip.all(:top20_count => nil))
+    end
+  end
+  
   task :progress => 'progress:new'
+  task :top20 => 'top20:new'
 end
 
 

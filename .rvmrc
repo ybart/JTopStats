@@ -1,0 +1,22 @@
+if ! rvm 1.9.2@jtopstats; then
+  if rvm 1.9.2; then
+    rvm gemset create jtopstats
+  else
+    rvm install 1.9.2
+    rvm 1.9.2
+    rvm gemset create jtopstats
+  fi
+  rvm 1.9.2@jtopstats
+fi
+
+if [ "`gem list bundler | grep bundler`" == '' ] ; then
+  echo "Installing bundler gem..."
+  gem install bundler
+fi
+
+if [ -n "${RVM_VERBOSE+x}" ]; then
+  bundle
+else
+  bundle | grep -v 'Using' | grep -v 'complete' | sed '/^$/d'
+fi
+

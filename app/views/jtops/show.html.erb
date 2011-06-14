@@ -12,6 +12,7 @@
 			<th class="rank-col"><%= sort_link 'Rang', :rank %></th>
 			<th class="progress-col"><%= sort_link 'Progression', :progress %></th>
 			<th class="clip-col"><%= sort_link 'Clip', :clip %></th>
+			<th class="top-col"><%= sort_link '10/20', :top %></th>
 			<th class="vote_c-col"><%= sort_link 'Votes', :vote_count %></th>
 			<th class="vote_s-col"><%= sort_link 'Sc. Votes', :vote_score %></th>
 			<th class="pal_c-col"><%= sort_link 'J-Potes', :pal_count %></th>
@@ -22,11 +23,12 @@
 		<tbody>
 	<% @rankings.clips.artists.each {|x|x} %>
 	<% @rankings.each { |r| %>
-		<tr class="<%= cycle('odd', 'even') %>">
+		<tr class="<%= cycle('odd', 'even') %> <%= r.clip.gold? ? 'gold' : nil %>">
 			<td><%= check_box_tag 'clip_ids[]', r.clip_id, false, :id => "clip_id_#{r.clip_id}", :class => 'select' %></td>
 			<td><%= r.rank %></td>
 			<td><%= r.formatted_progress(self) %></td>
 			<td><%= "#{r.clip.artist.name} - #{r.clip.title}" %></td>
+			<td><%= "#{r.clip.top10_count || '?'}/#{r.clip.top20_count || '?'}" %></td>
 			<td><%= r.vote_count %></td>
 			<td><%= r.vote_score %></td>
 			<td><%= r.pal_count %></td>

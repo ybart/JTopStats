@@ -66,6 +66,10 @@ group(:development, :test) do
   # in your rails application.
 
   # gem 'rails_metrics', '~> 0.1', :git => 'git://github.com/engineyard/rails_metrics'
-  gem 'ruby-debug'
+  if RUBY_VERSION >= "1.9"
+    gem 'ruby-debug19'
+  else
+    gem 'ruby-debug'
+  end
 end
 
