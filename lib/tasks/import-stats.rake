@@ -41,13 +41,11 @@ end
 
 def compute_tops clips
   Clip.raise_on_save_failure = true
-  Clip.transaction do
     clips.each {|clip|
       clip.top10_count = clip.rankings(:rank.lte => 10).count
       clip.top20_count = clip.rankings(:rank.lte => 20).count
       clip.save
     }
-  end
 end
 
 def fix_sequence model
