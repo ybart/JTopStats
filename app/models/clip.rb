@@ -14,6 +14,6 @@ class Clip
   has n, :rankings
 
   def gold?
-    top10_count >= 1 && top20_count >= 7
+    top10_count && top20_count && top10_count >= 1 && top20_count >= 7
   end
 end
