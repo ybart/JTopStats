@@ -102,7 +102,8 @@ namespace :compute do
 
     desc "Compute new tops 10/20"
     task :new => :environment do
-      compute_tops (Clip.all(:top10_count => nil) | Clip.all(:top20_count => nil))
+      last_jtop_id = Jtop.aggregate(:id.max) - 10
+      compute_tops (Clip.all(:top10_count => nil) | Clip.all(:top20_count => nil) | Clip.all(:rankings => {:jtop_id.gte => last_jtop_id, :rank.lte => 20}))
     end
   end
   
