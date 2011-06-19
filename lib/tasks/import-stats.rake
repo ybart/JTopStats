@@ -126,6 +126,8 @@ namespace :import do
     expected_headers = ["Ordre", "Progression", "Artiste", "Clip", "Votes J-Top", "Score J-Top", "Votes J-Pote", "Score J-Pote", "Score Total"]
 
     unless expected_headers == headers
+      puts "Expected: #{expected_headers.inspect}"
+      puts "Got: #{headers.inspect}"
       throw Exception.new("Cannot find expected valid results data table. Aborting import.")
     end
 
