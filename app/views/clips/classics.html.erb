@@ -1,5 +1,5 @@
 <% charts_js %>
-<section id="content" class="body">
+<section id="content">
 <%= @clips.count %> clips classiques à ce jour
 <%= form_tag(chart_clips_path, :method => :get) do %>
 <%= image_submit_tag 'chart.png', :class => 'chart' %>
@@ -29,3 +29,4 @@
 </table>
 <% end %>
 </section>
+<%= disqus %>

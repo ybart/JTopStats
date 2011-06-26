@@ -1,5 +1,5 @@
 <% charts_js %>
-<section id="content" class="body">
+<section id="content">
 	J-Top du <%= I18n.localize(@jtop.aired_at, :format => :long) %> - <%= @jtop.rankings.count %> résultats
 	<div id="quick-nav"><%= quick_nav %></div>
 	<%= form_tag(chart_clips_path, :method => :get) do %>
@@ -38,3 +38,4 @@
 	</tbody>
 	</table>
 </section>
+<%= disqus %>

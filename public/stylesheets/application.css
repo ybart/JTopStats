@@ -30,7 +30,7 @@ nav ul li:hover {
 	background-image: -moz-linear-gradient(top, #700 0%, #f33 100%););
 }
 
-section.body {margin: 15px;}
+section {margin: 15px;}
 
 table.data {border: 1px solid #aaa; width:100%;border-spacing:0px;padding:1px; table-layout:fixed;}
 table.data thead {background-color:#b00}
