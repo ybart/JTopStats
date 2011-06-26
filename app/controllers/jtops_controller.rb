@@ -15,9 +15,7 @@ class JtopsController < ApplicationController
 
   def show
     @jtop = Jtop.get!(params[:id])
-    unless Ranking.properties[params[:c]] || ['clip'].include?(params[:c])
-      params[:c] = 'rank'
-    end
+    params[:c] = 'rank' unless Ranking.properties[params[:c]] || ['clip'].include?(params[:c])
     @rankings = rankings
   end
 

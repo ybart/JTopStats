@@ -1,0 +1,31 @@
+<% charts_js %>
+<section id="content" class="body">
+<%= @clips.count %> clips classiques à ce jour
+<%= form_tag(chart_clips_path, :method => :get) do %>
+<%= image_submit_tag 'chart.png', :class => 'chart' %>
+<table class="data">
+	<thead><tr>
+		<th class="checkbox-col"><%= check_box_tag 'select_all' %></th>
+		<th class="clip-col"><%= sort_link 'Clip', :title %></th>
+		<th class="progress-col"><%= sort_link 'Entrée', :in %></th>
+		<th class="progress-col"><%= sort_link 'Classique', :gold %></th>
+		<th class="progress-col"><%= sort_link 'Top 10', :top10_count %></th>
+		<th class="progress-col"><%= sort_link 'Top 20', :top20_count %></th>
+	</tr></thead>
+	<tbody>
+		<% @clips.each do |clip| %>
+			<tr class="<%= cycle('odd', 'even') %>">
+				<% date_min, date_max = dates_for clip %>
+				<% date_min, date_max = I18n.localize(date_min, :format => :long), I18n.localize(date_max, :format => :long) %>
+				<td><%= check_box_tag 'clip_ids[]', clip.id, false, :id => "clip_id_#{clip.id}", :class => 'select' %></td>
+				<td><%= "#{clip.artist.name} - #{clip.title}" %></td>
+				<td title="<%= date_min %>"><%= @aggregates[clip.id][:min] %></td>
+				<td title="<%= date_max %>"><%= @aggregates[clip.id][:max] %></td>
+				<td><%= clip.top10_count %></td>
+				<td><%= clip.top20_count %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<% end %>
+</section>

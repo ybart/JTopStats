@@ -1,6 +1,7 @@
 JTopStats::Application.routes.draw do
   resources :clips do
     collection {get :chart}
+    collection {get :classics}
   end
 
   resources :artists
