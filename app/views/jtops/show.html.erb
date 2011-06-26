@@ -1,4 +1,5 @@
 <% charts_js %>
+<% title "J-Top du #{I18n.localize(@jtop.aired_at, :format => :long)}" %>
 <section id="content">
 	J-Top du <%= I18n.localize(@jtop.aired_at, :format => :long) %> - <%= @jtop.rankings.count %> résultats
 	<div id="quick-nav"><%= quick_nav %></div>

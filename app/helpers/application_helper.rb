@@ -1,8 +1,4 @@
 module ApplicationHelper
-  def title
-    content_for?(:title) ? content_for(:title) : 'J-Top Stats'
-  end
-
   def arrow column
    (params[:c].to_sym == column) ? (params[:d] == 'down' ? '&#x25bc;' : '&#x25b2;') : ''
   end
@@ -30,5 +26,9 @@ module ApplicationHelper
     contents = "<script>var disqus_developer = 1;</script>" + contents if Rails.env == 'development'
 
     return contents.html_safe
+  end
+
+  def title title
+    content_for(:title) { title }
   end
 end
