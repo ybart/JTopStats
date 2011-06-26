@@ -4,7 +4,7 @@
 	<div id="quick-nav"><%= quick_nav %></div>
 	<%= form_tag(chart_clips_path, :method => :get) do %>
 	<input type="hidden" name="jtop_id" value="<%= @jtop.id %>">
-	<%= image_submit_tag 'chart.png' %>
+	<%= image_submit_tag 'chart.png', :class => 'chart' %>
 	<table class="data">
 		<thead><tr>
 			<th class="checkbox-col"><%= check_box_tag 'select_all' %></th>
