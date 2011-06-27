@@ -88,6 +88,7 @@ namespace :import do
     end
 
     DataMapper.auto_migrate!
+    puts "DB Size: " + Clip.find_by_sql("SELECT pg_size_pretty(pg_database_size('postgres')) as artist_id").first.artist_id
 
     # Silent logger
     DataMapper::Logger.new($stderr, :info)
@@ -97,6 +98,7 @@ namespace :import do
     doc.css('Artiste').each { |a|
       Artist.create(:id => content_for(a, 'id'), :name => content_for(a, 'nom'))
     }
+    puts "DB Size: " + Clip.find_by_sql("SELECT pg_size_pretty(pg_database_size('postgres')) as artist_id").first.artist_id
 
     # Importing Clips
     puts "Migrating Clips..."
@@ -105,6 +107,7 @@ namespace :import do
       :title => content_for(c, 'titre'),
       :artist_id => content_for(c, 'id_artiste'))
     }
+    puts "DB Size: " + Clip.find_by_sql("SELECT pg_size_pretty(pg_database_size('postgres')) as artist_id").first.artist_id
 
     # Importing J-Tops
     puts "Migrating J-Tops..."
@@ -115,6 +118,7 @@ namespace :import do
 
     # Importing Rankings
     puts "Migrating Rankings..."
+    count = 0
     doc.css('Notation').each { |r|
       Ranking.create(
       :jtop_id => content_for(r, 'id_jTop'),
@@ -124,8 +128,12 @@ namespace :import do
       :vote_count => content_for(r, 'num_votes'),
       :pal_score => content_for(r, 'score_jpote'),
       :pal_count => content_for(r, 'num_jpote'))
+      count += 1
+      if count % 10000 == 0
+        puts "Added rankings: " + Ranking.count.to_s
+      end
     }
-
+    
   end
 
 end
