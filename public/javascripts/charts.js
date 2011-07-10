@@ -1,3 +1,7 @@
+Highcharts.setOptions({
+	lang: {resetZoom: "Zoom out", resetZoomTitle: "View all data"}
+});
+
 function buildChart(data) {
 	var chart = new Highcharts.Chart({
 		credits: {enabled: false},
@@ -56,7 +60,6 @@ function buildChart(data) {
 			y: -50,
 			borderWidth: 0,
 		},
-		lang: {resetZoom: 'Zoom out'},
 		series: data.series
 	})
 
