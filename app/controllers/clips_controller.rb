@@ -5,10 +5,10 @@ class ClipsController < ApplicationController
     @rankings = []
     min, max = Ranking.all(:clip_id => params[:clip_ids]).aggregate(:jtop_id.min, :jtop_id.max)
     jtop_id = params[:jtop_id] ? params[:jtop_id].to_i : max
-    min = [min, jtop_id-25].max
-    max = [max, min+50].min
+    x_min = [min, jtop_id-25].max
+    x_max = [max, x_min+50].min
 
-    rankings = Ranking.all(:clip_id => params[:clip_ids], :order => :jtop_id, :jtop_id.gte => min, :jtop_id.lte => max)
+    rankings = Ranking.all(:clip_id => params[:clip_ids], :order => :jtop_id,  :jtop_id.gte => min, :jtop_id.lte => max)
     y_min, y_max = rankings.aggregate(:rank.min, :rank.max)
     clips = rankings.clips
     artists = rankings.clips.artists
@@ -32,7 +32,8 @@ class ClipsController < ApplicationController
 
     result = {
       :series  => @rankings,
-      :yAxis => {:min => y_min, :max => y_max}
+      :yAxis => {:min => y_min, :max => y_max},
+      :xAxis => {:min => x_min, :max => x_max}
     }.to_json
 
     render :inline => result, :content_type => 'application/json'
