@@ -1,0 +1,18 @@
+<% title 'Liste des artistes' %>
+
+<section id="content">
+<table class="data">
+	<thead><tr>
+		<th class="name-col"><%= sort_link 'Name', :name %></th>
+		<th class="clip-col"><%= sort_link 'Clips', :clip_count %></th>
+	</tr></thead>
+	<tbody>
+		<% @artists.each do |artist|  %>
+		<tr class="<%= cycle('odd', 'even') %>">
+			<td><%= link_to artist.name, artist_path(artist) %></td>
+			<td><%= artist.clip_count %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+</section>

@@ -6,6 +6,6 @@ module JtopsHelper
     nav += ' | ' + I18n.t('jtop.go') + form_tag(jtops_path, :method => :get, :class => 'inline') do
       text_field_tag(:id, nil, :size => 3) + submit_tag('Go')
     end
-    return nav.html_safe
+    return "<div id='quick-nav'>#{nav}</div>".html_safe
   end
 end

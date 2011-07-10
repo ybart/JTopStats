@@ -1,0 +1,24 @@
+<% charts_js %>
+<%= title "#{@artist.name}" %>
+
+<section id="content">
+<%= form_tag(chart_clips_path, :method => :get) do %>
+<%= image_submit_tag 'chart.png', :class => 'chart' %>
+	<table class="data">
+		<thead><tr>
+			<th class="checkbox-col"><%= check_box_tag 'select_all' %></th>
+			<th class="name-col"><%= sort_link 'Name', :title %></th>
+		</tr></thead>
+		<tbody>
+			<% @clips.each do |clip|  %>
+			<tr class="<%= cycle('odd', 'even') %> <%= clip.gold? ? 'gold' : nil %>">
+				<td><%= check_box_tag 'clip_ids[]', clip.id, false, :id => "clip_id_#{clip.id}", :class => 'select' %></td>
+				<td><%= clip.title # link_to clip.title, clip_path(clip)
+				 %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+<%= image_submit_tag 'chart.png', :class => 'chart' %>
+<% end %>
+</section>

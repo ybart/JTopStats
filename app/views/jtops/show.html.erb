@@ -2,7 +2,7 @@
 <% title "J-Top du #{I18n.localize(@jtop.aired_at, :format => :long)}" %>
 <section id="content">
 	J-Top du <%= I18n.localize(@jtop.aired_at, :format => :long) %> - <%= @jtop.rankings.count %> résultats
-	<div id="quick-nav"><%= quick_nav %></div>
+	<%= quick_nav %>
 	<%= form_tag(chart_clips_path, :method => :get) do %>
 	<input type="hidden" name="jtop_id" value="<%= @jtop.id %>">
 	<%= image_submit_tag 'chart.png', :class => 'chart' %>
@@ -34,9 +34,10 @@
 			<td><%= r.pal_score %></td>
 			<td><%= r.pal_score + r.vote_score %></td>
 		</tr>
-	<% } %>	
-	<% end %>
+	<% } %>
 	</tbody>
 	</table>
+	<%= image_submit_tag 'chart.png', :class => 'chart' %>
+	<% end %>
 </section>
 <%= disqus %>
