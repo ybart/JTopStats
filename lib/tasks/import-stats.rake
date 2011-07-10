@@ -69,20 +69,6 @@ namespace :compute do
       compute_rankings Ranking.all
     end
 
-    desc "Compute progress values for missing rankings"
-<<<<<<< HEAD
-    task :missing => :environment do
-      Ranking.all(:progress => nil, :prev_jtop => nil).each { |r|
-        prev = r.prev_ranking
-
-        if prev
-          r.progress = prev.rank - r.rank
-          r.prev_jtop_id = prev.jtop_id
-          r.save
-        end
-
-      }
-=======
     task :fix => :environment do
       compute_rankings Ranking.all(:progress => 0, :prev_jtop => nil)
     end
@@ -90,10 +76,9 @@ namespace :compute do
     desc "Compute progress values for missing rankings"
     task :new => :environment do
       compute_rankings Ranking.all(:progress => nil, :prev_jtop => nil)
->>>>>>> e1cbae0... Nolife Website importer
     end
   end
-  
+
   namespace :top20 do
     desc "Compute new tops 10/20"
     task :all => :environment do
@@ -106,7 +91,7 @@ namespace :compute do
       compute_tops (Clip.all(:top10_count => nil) | Clip.all(:top20_count => nil) | Clip.all(:rankings => {:jtop_id.gte => last_jtop_id, :rank.lte => 20}))
     end
   end
-  
+
   task :progress => 'progress:new'
   task :top20 => 'top20:new'
 end
