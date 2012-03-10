@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-RAILS_VERSION = '~> 3.0.4'
+RAILS_VERSION = '~> 3.0.12'
 DM_VERSION    = '~> 1.1.0'
 
 gem 'rails'
@@ -66,10 +66,10 @@ group(:development, :test) do
   # in your rails application.
 
   # gem 'rails_metrics', '~> 0.1', :git => 'git://github.com/engineyard/rails_metrics'
-  if RUBY_VERSION >= "1.9"
-    gem 'ruby-debug19'
-  else
-    gem 'ruby-debug'
-  end
+  #if RUBY_VERSION >= "1.9"
+  #  gem 'ruby-debug19'
+  #else
+  #  gem 'ruby-debug'
+  #end
 end
 

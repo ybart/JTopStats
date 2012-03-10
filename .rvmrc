@@ -9,7 +9,7 @@ if ! rvm 1.9.2@jtopstats; then
   rvm 1.9.2@jtopstats
 fi
 
-if [ "`gem list bundler | grep bundler`" == '' ] ; then
+if [ "`gem list bundler | grep bundler`" = '' ] ; then
   echo "Installing bundler gem..."
   gem install bundler
 fi

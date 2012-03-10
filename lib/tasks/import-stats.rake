@@ -92,7 +92,7 @@ namespace :compute do
     end
   end
 
-  task :progress => 'progress:new'
+  task :progress => 'rankings:new'
   task :top20 => 'top20:new'
 end
 

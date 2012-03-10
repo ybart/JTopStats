@@ -1,2 +1,36 @@
 Use this README file to introduce your application and point to useful places in the API for learning more.
 Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+
+Weekly import:
+
+heroku run rake import:nolife compute:top20 compute:rankings:new
+
+- ou -
+
+heroku run rake import:nolife compute:top20:all compute:rankings:new
+
+Fix changing names
+==================
+
+artist_name = 'PASSPO%'
+ok = (Artist.count(:name.like => artist_name) == 2)
+artist_copy = Artist.all(:name.like => artist_name, order: :id).last if ok
+ortist_orig = Artist.all(:name.like => artist_name, order: :id).first if ok
+ortist_orig.name = artist_copy.name; ortist_orig.save
+artist_copy.clips.destroy!
+artist_copy.destroy!
+
+Then re-import current J-Top:
+
+	heroku run rake import:nolife compute:top20 compute:rankings:new
+
+Message de mise à jour
+======================
+Les statistiques du J-Top de cette semaine sont mises à jour sur mon site. Vous pouvez y retrouver:
+[LIST]
+[*]Le classement de la semaine et de tous les J-Tops précédents.
+[*]La liste des classiques.
+[*]Sur chaque liste, vous pouvez choisir les clips dont vous voulez comparer l'évolution avec un maaaagnifique graphique aux couleurs acidulées.
+[*]Vous pouvez commenter un J-Top ou un artiste, si vous le souhaitez.
+[/LIST]
+Consultez ma signature pour les liens.
