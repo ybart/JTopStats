@@ -106,7 +106,7 @@ namespace :import do
 
     puts "Fetching J-Top #{jtop_id} at #{url}"
 
-    doc = Nokogiri::HTML(open(url), nil, "utf8")
+    doc = Nokogiri::HTML(open(url), nil, "utf-8")
 
     headers = doc.css('.TBnl th').collect {|h| h.content}
     expected_headers = ["Ordre", "Progression", "Artiste", "Clip", "Votes J-Top", "Score J-Top", "Votes J-Pote", "Score J-Pote", "Score Total"]
