@@ -43,7 +43,7 @@ def compute_tops clips
   Clip.raise_on_save_failure = true
     clips.each {|clip|
       clip.top10_count = clip.rankings(:rank.lte => 10).count
-      clip.top20_count = clip.rankings(:rank.lte => 20, :jtop_id.gte => 89).count
+      clip.top20_count = clip.rankings(:rank.gt => 10, :rank.lte => 20, :jtop_id.gte => 89).count + clip.top10_count
       clip.save
     }
 end
