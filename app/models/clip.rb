@@ -17,7 +17,7 @@ class Clip
   end
 
   def self.classics
-    all(:top10_count.gte => 1, :top20_count.gte => 7)
+    all(:top10_count.gte => 1, :top20_count.gte => 7) | all(:top10_count.gte => 10)
   end
 
   def self.sorted_by_title direction=:asc
