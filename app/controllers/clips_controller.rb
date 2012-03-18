@@ -39,10 +39,14 @@ class ClipsController < ApplicationController
     render :inline => result, :content_type => 'application/json'
   end
 
+  def u objects
+    Clip.all(id: objects.collect(&:id))
+  end
+
   def classics
     params[:c] = 'title' unless Clip.properties[params[:c]] || ['in', 'gold'].include?(params[:c])
     @clips = golden_clips
-    raw_aggregates = @clips.rankings.aggregate(:jtop_id.min, :jtop_id.max, :clip_id)
+    raw_aggregates = u(@clips).rankings.aggregate(:jtop_id.min, :jtop_id.max, :clip_id)
     @aggregates = Hash[raw_aggregates.collect{|a| [a[2], Hash[*[:min,:max,:id].zip(a).flatten]]}]
     @clips = sorted_clips
     @jtops = Hash[Jtop.all.collect {|jtop| [jtop.id, jtop]}]
@@ -65,9 +69,9 @@ private
     case params[:c]
     when 'title'
       if params[:d] == 'down'
-        Clip.classics.sorted_by_title(:desc).all
+        Clip.classics.sort_by(&:sort_title).reverse!
       else
-        Clip.classics.sorted_by_title(:asc).all
+        Clip.classics.sort_by(&:sort_title)
       end
     when 'in', 'gold' then Clip.classics.all
     else Clip.classics.all(:order => sort_order)
