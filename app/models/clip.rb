@@ -12,8 +12,10 @@ class Clip
   belongs_to :artist
   has n, :rankings
 
-  def gold?
-    top10_count && top20_count && ((top10_count >= 1 && top20_count >= 7) || (top10_count >= 10))
+  def gold?(jtop=nil)
+    golden = top10_count && top20_count && ((top10_count >= 1 && top20_count >= 7) || (top10_count >= 10))
+    
+    return golden ? !jtop || rankings.all(:jtop_id.gt => jtop).count == 0 : false
   end
 
   def sort_title

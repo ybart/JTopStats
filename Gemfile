@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 RAILS_VERSION = '~> 3.0.12'
-DM_VERSION    = '~> 1.1.0'
+DM_VERSION    = '~> 1.2.0'
 
 gem 'rails'
 gem 'activesupport',      RAILS_VERSION, :require => 'active_support'
@@ -12,8 +12,6 @@ gem 'jquery-rails'
 gem 'nokogiri'
 gem 'rake', '0.8.7'
 gem 'pg'
-
-gem 'dm-rails',          '~> 1.1.0'
 
 # You can use any of the other available database adapters.
 # This is only a small excerpt of the list of all available adapters
@@ -29,6 +27,7 @@ gem 'dm-rails',          '~> 1.1.0'
 # gem 'dm-oracle-adapter',    DM_VERSION
 # gem 'dm-sqlserver-adapter', DM_VERSION
 
+gem 'dm-rails',             DM_VERSION
 gem 'dm-migrations',        DM_VERSION
 gem 'dm-types',             DM_VERSION
 gem 'dm-validations',       DM_VERSION
@@ -37,10 +36,12 @@ gem 'dm-transactions',      DM_VERSION
 gem 'dm-aggregates',        DM_VERSION
 gem 'dm-timestamps',        DM_VERSION
 gem 'dm-observer',          DM_VERSION
-gem 'dm-ar-finders',        :git => 'git://github.com/datamapper/dm-ar-finders.git'
+gem 'dm-active_model',      DM_VERSION
+gem 'dm-ar-finders',        DM_VERSION
+#gem 'dm-ar-finders',        :git => 'git://github.com/datamapper/dm-ar-finders.git'
 
 # Hack to run on Heroku
-gem 'dm-active_model', :git => 'git://github.com/xaviershay/dm-active_model.git'
+#gem 'dm-active_model', :git => 'git://github.com/xaviershay/dm-active_model.git'
 
 group  :production do
   gem 'dm-postgres-adapter',  DM_VERSION

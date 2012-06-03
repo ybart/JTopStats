@@ -22,7 +22,7 @@
 		<tbody>
 	<% @rankings.clips.artists.each {|x|x} %>
 	<% @rankings.each { |r| %>
-		<tr class="<%= cycle('odd', 'even') %> <%= r.clip.gold? ? 'gold' : nil %>">
+		<tr class="<%= cycle('odd', 'even') %> <%= r.clip.gold?(@jtop.id) ? 'gold' : nil %>">
 			<td><%= check_box_tag 'clip_ids[]', r.clip_id, false, :id => "clip_id_#{r.clip_id}", :class => 'select' %></td>
 			<td><%= r.rank %></td>
 			<td><%= r.formatted_progress(self) %></td>
