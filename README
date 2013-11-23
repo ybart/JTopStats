@@ -1,3 +1,38 @@
+Installing on OS X
+==================
+
+My development machine uses the following environment:
+
+* Mac OS X 10.7
+* Ruby Version Manager (latest stable)
+* Xcode 4.3 with Command line tools
+* Ruby 1.9.3p194
+
+Delete previous RVM installation
+--------------------------------
+
+If you have trouble compiling gems or everything because you changed environment since last time, RVM reinstall can be a fair solution. You will need to recreate all of your gemsets though.
+
+Installing RVM, Ruby and Gems
+-----------------------------
+
+- Install RVM using the instructions from http://rvm.io/
+- Use RVM to install Ruby 1.9.3
+- Then create a RVM gemset 1.9.3@jtopstats
+- Use Bundler to install the Project dependencies
+
+Run the project using Pow
+-------------------------
+
+Once everything is installed. You can use the gem powder to install pow, then link your project. You will need to tell pow about your RVM environment.
+To this intent, use the following commands:
+
+  gem install powder
+  rvm env -- 1.9.3@jtopstats > .powenv
+  powder install
+  powder link
+  powder open
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
