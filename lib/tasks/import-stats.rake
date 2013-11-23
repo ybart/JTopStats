@@ -100,7 +100,7 @@ end
 namespace :import do
   desc "Import statistics from Nolife web site"
   task :nolife => :environment do
-    jtop_id = ENV['jtop'] ? ENV['jtop'].to_i : Jtop.aggregate(:id.max)  + 1
+    jtop_id = ENV['jtop'] ? ENV['jtop'].to_i : Jtop.aggregate(:id.max) + 1
     url = 'http://www.nolife-tv.com/resultats_j-top'
     url += "?periode=#{jtop_id + 8}"
 
